@@ -1,0 +1,130 @@
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+
+}
+
+.todo-list header {
+    color: #999;
+}
+
+.todolist-app {
+    list-style-type: none;
+}
+
+.todolist-editor {
+    border: 1px solid gray;
+}
+
+.todolist-editor .checkboxAll {
+     /* none - к элементу не применяется специальный стиль */
+    -webkit-appearance: none; 
+    /* поворачиваем элемент */
+    
+    transform: rotate(90deg);
+}
+
+.todolist-editor .checkboxAll:checked:before {
+    color: green;
+}
+
+.todolist-editor .checkboxAll:before {
+    content: '❯';
+    font-size: 18px;
+    color:gray; 
+}
+.todolist-editor .new-todo{
+    padding: 16px;
+    width: 340px;
+    font-size: 18px;
+    border: none
+}
+
+ul {
+    list-style: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.listTodo {
+    border: 1px solid gray;
+}
+
+.listTodo li {
+    display: flex;
+    -webkit-appearance: none;
+    justify-content: space-around;
+
+}
+
+.listTodo li .checkboxItem {
+    height: 20px;
+    width: 20px; 
+}
+
+.listTodo li .textItem {
+     display: none; 
+}
+
+.listTodo li .textItemEdit {
+    display: block;
+    border: none;
+    padding: 10px; 
+    width: 350px;
+    font-size: 18px;
+}
+
+.listTodo li label {
+    width: 350px;
+    font-size: 18px;
+    border: none;
+    padding: 10px; 
+    word-break: break-all;
+    text-align: left;
+    /* background-color: grey; */
+}
+
+.listTodo li .text-through{
+    text-decoration: line-through;
+}
+
+.listTodo li .destroy {
+    margin: 0px 5px 0px 5px;
+    color: pink;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+}
+.listTodo li .destroy:hover {
+    color: red;
+}
+
+.filter-todoList {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    justify-content: space-around;
+    border: 1px solid grey;
+}
+.filter-todoList span  {
+    padding: 4px 10px;
+}
+.filter {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: space-around;
+    justify-content: center;
+}
+
+.filter li {
+    padding: 4px 8px;
+    cursor: pointer;
+}
