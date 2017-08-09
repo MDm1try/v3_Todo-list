@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+
 import logo from './logo.svg';
-import './App.css';
+import './style/App.css';
 import Todolist from './todolist';
 
 
@@ -13,18 +14,14 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <div className="todo-list">
-
           <header>
             <h1>To-do list</h1>
           </header>
-          
           <Todolist/>
-
         </div>  
-        
       </div>
     );
   }
 }
 
-export default App
+export default App;

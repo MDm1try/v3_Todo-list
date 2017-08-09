@@ -1,11 +1,10 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
 
 class TodoListEditor extends React.Component {
   constructor(props) {
     super(props);
     this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.onTodoCompleteAll = this.props.onTodoCompleteAll;
   } 
 
   handleKeyPress(event){
@@ -25,12 +24,18 @@ class TodoListEditor extends React.Component {
       const newTask = {
         id: Date.now(),
         text: str.trim(),
-        complete: true,
+        completed: false,
         labelDbClick: false
       };
-      this.props.onTodoAdd(newTask);
+      this.props.onAddTask(newTask);
+      this.props.onChangeFilter('SHOW_ALL');
       event.target.value = "";
     }
+  }
+
+  handleTodoCompleteAll() {
+    this.props.onToggleCompleteAll();
+    this.props.onToggleAllInputChecked(this.props.filter[0].allTasks);
   }
 
   render() {
@@ -39,8 +44,7 @@ class TodoListEditor extends React.Component {
         <input 
           className="checkboxAll"
           type = "checkbox"
-          //onClick = {() => this.props.onTodoCompleteAll()}
-          onClick = {this.onTodoCompleteAll.bind(null,this.props.AllTask)}
+          onClick = {this.handleTodoCompleteAll.bind(this)}
         />
         <input
           placeholder="What needs to be done?"
@@ -53,4 +57,27 @@ class TodoListEditor extends React.Component {
   }
 };
 
-export default TodoListEditor;
+const mapDispatchToProps = dispatch => {
+    return {
+      onToggleCompleteAll: () => {
+        dispatch({type: 'TOGGLE_COMPLETED_ALL_FILTER'})
+      },
+      onAddTask: (task) => {
+        dispatch({type: 'ADD_TASK', payload: task})
+      },
+      onToggleAllInputChecked: (allTasks) => {
+        dispatch({type: 'TOGGLE_ALL_INPUT_CHECKED_TASK', payload: allTasks})
+      },
+      onChangeFilter: (filter) => {
+        dispatch({type: 'CHANGE_FILTER', payload: filter})
+      }
+    }
+}
+
+export default connect(
+  state => ({
+    tasks: state.tasks,
+    filter: state.filter
+  }),
+  mapDispatchToProps
+)(TodoListEditor);
